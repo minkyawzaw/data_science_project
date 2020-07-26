@@ -1,0 +1,24 @@
+﻿<html>
+<div>
+<b style='color: steelblue;' id='case';> Case</b>
+</div>
+<div>
+<b style='color: steelblue;' id='death';> Death</b>
+</div>
+<b style='background-color:steelblue; color:red;' id='mkz'>MIN KYAW ZAW</b>
+</html>
+<script>
+setInterval(update, 1000)
+function update(){
+   fetch('https://cors-anywhere.herokuapp.com/https://www.worldometers.info/coronavirus/?utm_campaign=homeAdvegas1?').then(function(response) {
+      response.text().then(function(text) {
+      text = text.split('</title>')[0].split(': ')[1].split(' ')
+      cases = text[0]
+      deaths = text[3]
+      document.getElementById("case").innerHTML = cases
+      document.getElementById("death").innerHTML = deaths;
+  });
+});
+
+}
+</script>
